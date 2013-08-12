@@ -1,0 +1,13 @@
+---
+- name: Install software-properties-common
+  apt: pkg=software-properties-common state=latest update_cache=yes
+
+- name: Add nginx PPA
+  apt_repository: repo=ppa:nginx/stable
+
+- name: Install nginx
+  apt: pkg=nginx state=latest
+
+- name: Copy default nginx configuration
+  template: src=default.conf dest=/etc/nginx/conf.d/default.conf
+  notify: restart nginx

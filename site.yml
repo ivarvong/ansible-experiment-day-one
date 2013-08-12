@@ -1,0 +1,9 @@
+---
+- name: All-in-one magic robotz
+  hosts: all
+  user: root
+
+  roles:
+    - common
+    - nginx
+
